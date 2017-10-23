@@ -4,16 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApplication1 
+namespace ConsoleApplication3
 {
     class Program
     {
         static void Main(string[] args)
         {
-        Console.WriteLine("Hello World!");
-        Console.WriteLine("Press any line to continue...");
-
-        Console.ReadLine();
         }
     }
 }
