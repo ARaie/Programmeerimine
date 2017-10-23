@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace 01-Hello-World
+namespace 01-Hello-World 
 {
     class Program
     {
@@ -12,6 +12,8 @@ namespace 01-Hello-World
         {
         Console.WriteLine("Hello World!");
         Console.WriteLine("Press any line to continue...");
+
+        Console.ReadLine();
         }
     }
 }
