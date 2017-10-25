@@ -15,27 +15,17 @@ namespace DiceRoller
             Console.WriteLine("Roll 3d6 2d8");
             Console.WriteLine();
 
-            Dice dice = new Dice();
-            var total = 0;
+            DiceRollerdiceRoller = new DiceRoller();
+            List<DiceRoll> diceRolls = diceRoller.Roll(new List<Dice> { DiceRoller.D6, DiceRoller.D6, DiceRoller.D6, Dice.D8, DiceRoller.D8 });
 
-            for (var i = 0; i < 3; i++)
+
+            foreach (var diceRoll in diceRolls)
             {
-                var roll = dice.Roll(6);
-                total += roll;
-
-                Console.WriteLine($"1d6: {roll}");
-            }
-
-            for (var i = 0; i < 2; i++)
-            {
-                var roll = dice.Roll(8);
-                total += roll;
-
-                Console.WriteLine($"1d8: {roll}");
+                Console.WriteLine($"1{diceRoll.Dice}: {diceRoll.Value}");
             }
 
            
-            Console.WriteLine($"Roll total: {total}");
+            Console.WriteLine($"Roll total: {diceRolls.Sum(x => x.Value)}");
 
             Console.WriteLine("Press any key to continue...");
             Console.ReadLine();
