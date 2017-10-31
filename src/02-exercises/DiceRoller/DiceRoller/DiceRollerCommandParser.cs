@@ -11,7 +11,7 @@ namespace DiceRoller
         
         
        
-        public List<Dice> Dices(string input)
+        public List<Dice> Source(string input)
         {
             var dices = new List<Dice>();
 

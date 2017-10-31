@@ -11,7 +11,7 @@ namespace DiceRoller
        
         static void Main(string[] args)
         {
-            Console.WriteLine("Ütle mida veeretada tahad");
+            Console.WriteLine("Give your command");
             string input = Console.ReadLine();
             Console.WriteLine();
             Console.WriteLine("> "+input);
@@ -19,10 +19,10 @@ namespace DiceRoller
 
 
             DiceRollerCommandParser dices = new DiceRollerCommandParser();
-            List<Dice> f = dices.Dices(input);
+            List<Dice> userCommand = dices.Source(input);
 
             DiceRoller diceRoller = new DiceRoller();
-            List<DiceRoll> diceRolls = diceRoller.Roll(f);
+            List<DiceRoll> diceRolls = diceRoller.Roll(userCommand);
 
             foreach (var diceRoll in diceRolls)
             {
