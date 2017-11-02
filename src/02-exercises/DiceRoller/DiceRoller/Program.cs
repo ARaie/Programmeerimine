@@ -14,7 +14,7 @@ namespace DiceRoller
             Console.WriteLine("Give your command");
             string input = Console.ReadLine();
             Console.WriteLine();
-            Console.WriteLine("> "+input);
+            Console.WriteLine("> /roll "+input);
             Console.WriteLine();
 
 
