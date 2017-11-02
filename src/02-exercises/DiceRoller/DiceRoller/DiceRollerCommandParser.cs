@@ -8,12 +8,7 @@ namespace DiceRoller
 {
     class DiceRollerCommandParser
     {
-<<<<<<< HEAD
-      
-=======
-        //kommentaar
-       
->>>>>>> 46a855ca9c31fca61d56ae08dce05aa84ab7863b
+
        
         public List<Dice> Source(string input)
         {
