@@ -39,33 +39,33 @@ namespace DiceRoller
 
         public static Dice FromString(string kirjeldus)
         {
-            Dice dice = null;
+            
 
             if (kirjeldus == "6")
             {
-                dice =  D6;
+                return  D6;
             }
             else if (kirjeldus == "4")
             {
-                dice = D4;
+                return D4;
             }
             else if (kirjeldus == "8")
             {
-                dice = D8;
+                return D8;
             }
             else if (kirjeldus == "10")
             {
-                dice = D10;
+                return D10;
             }
             else if (kirjeldus == "12")
             {
-                dice = D12;
+               return D12;
             }
-            else if (kirjeldus == "20")
+            else 
             {
-                dice = D20;
+                return D20;
             }
-            return dice;
+           
     }
 
         public int Roll()
