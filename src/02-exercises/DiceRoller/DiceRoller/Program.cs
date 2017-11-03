@@ -28,7 +28,29 @@ namespace DiceRoller
             {
                 Console.WriteLine($"{diceRoll.Dice}: {diceRoll.Value}");
             }
-
+            /*
+                        Dice d6 = Dice.D6;
+                        var total = 0;
+            
+                        for (var i =0; i<3; i++)
+                        {
+                            var roll = d6.Roll();
+                            total += roll;
+            
+                            Console.WriteLine($"{d6.Description}: {roll}");
+                        }
+            
+                        Dice d8 = Dice.D8;
+            
+                        for (var i = 0; i < 2; i++)
+                        {
+                           var roll = d8.Roll();
+                            total += roll;
+            
+                            Console.WriteLine($"{d8.Description}: {roll}");
+                        }
+                        
+                */
             Console.WriteLine();
             Console.WriteLine($"Roll total: {diceRolls.Sum(x => x.Value)}");
             Console.WriteLine();
