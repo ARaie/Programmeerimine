@@ -25,20 +25,6 @@ namespace DiceRoller
 
         }
 
-        //public static Dice D6 = new Dice(6, "1d6");
-
-        //public static Dice D8 = new Dice(8, "1d8");
-
-        //public static Dice D20 = new Dice(20, "1d20");
-
-        //public static Dice D10 = new Dice(10, "1d10");
-
-        //public static Dice D4 = new Dice(4, "1d4");
-
-        //public static Dice d = new Dice(12, "1d12");
-
-
-
 
         public static Dice FromString(string kirjeldus)
         {
