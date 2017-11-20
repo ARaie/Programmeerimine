@@ -28,7 +28,7 @@ namespace DiceRoller
             {
                 Console.WriteLine($"{diceRoll.Dice}: {diceRoll.Value}");
             }
-
+       
             Console.WriteLine();
             Console.WriteLine($"Roll total: {diceRolls.Sum(x => x.Value)}");
             Console.WriteLine();

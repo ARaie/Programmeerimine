@@ -24,37 +24,48 @@ namespace DiceRoller
             this.Sides = sides;
 
         }
-
+        public static Dice D6 = new Dice(6, "1d6");
+ 
+         public static Dice D8 = new Dice(8, "1d8");
+ 
+         public static Dice D20 = new Dice(20, "1d20");
+ 
+         public static Dice D10 = new Dice(10, "1d10");
+ 
+         public static Dice D4 = new Dice(4, "1d4");
+ 
+         public static Dice D12 = new Dice(12, "1d12");
+ 
 
         public static Dice FromString(string kirjeldus)
         {
-            Dice dice = null;
+            
 
             if (kirjeldus == "6")
             {
-                dice = new Dice(6, "1d6");
+                return  D6;
             }
             else if (kirjeldus == "4")
             {
-                dice = new Dice(4, "1d4");
+                return D4;
             }
             else if (kirjeldus == "8")
             {
-                dice = new Dice(8, "1d8");
+                return D8;
             }
             else if (kirjeldus == "10")
             {
-                dice = new Dice(10, "1d10");
+                return D10;
             }
             else if (kirjeldus == "12")
             {
-                dice = new Dice(12, "1d12");
+               return D12;
             }
-            else if (kirjeldus == "20")
+            else 
             {
-                dice = new Dice(20, "1d20");
+                return D20;
             }
-            return dice;
+           
     }
 
         public int Roll()

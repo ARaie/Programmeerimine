@@ -38,7 +38,6 @@ namespace DiceRoller
                         dices.Add(dice);
                     }
                 }
-            
 
             return dices;
         }
