@@ -17,17 +17,21 @@ namespace Blackjack.Client.Console
 
             Console.WriteLine("Welcome to the came!");
             Console.WriteLine();
+            
 
-            var c4 = new Card("4", Suite.Club, 4);
-            c4.Hidden = false;
-            var h6 = new Card("6", Suite.Hearts, 6);
-            h6.Hidden = false;
-            var s8 = new Card("8", Suite.Spade, 8);
-            s8.Hidden = false;
-            var dJ = new Card("J", Suite.Diamond, 10);
+            var cards = new List<Card> {
+                new Card("4", Suite.Club, 4, false),
+                new Card("6", Suite.Hearts, 6, false),
+                new Card("8", Suite.Spade, 8, false),
+                new Card("J", Suite.Diamond, 10, true),
+                new Card("4", Suite.Spade, 4, false),
+                new Card("T", Suite.Hearts, 10, true) };
 
-            Console.WriteLine($"You have been dealt: {GetCardDercription(c4)}, {GetCardDercription(h6)}");
-            Console.WriteLine($"House has been dealt: {GetCardDercription(s8)}, {GetCardDercription(dJ)}");
+            var deck = new Deck(cards);
+
+
+            Console.WriteLine($"You have been dealt: {GetCardDercription(deck.Next())}, {GetCardDercription(deck.Next())}");
+            Console.WriteLine($"House has been dealt: {GetCardDercription(deck.Next())}, {GetCardDercription(deck.Next())}");
             Console.WriteLine();
             Console.WriteLine("What do you want to do? ");
             Console.WriteLine("Choose [1] to take another card");
@@ -35,15 +39,10 @@ namespace Blackjack.Client.Console
             Console.WriteLine();
             Console.WriteLine("I choose: 1");
             Console.WriteLine();
+         
+            Console.WriteLine($"You have been dealt: {GetCardDercription(deck.Next())}");
 
-            var s4 = new Card("4", Suite.Spade, 4);
-            s8.Hidden = false;
-
-            Console.WriteLine($"You have been dealt: {GetCardDercription(s4)}");
-
-            var hT = new Card("T", Suite.Hearts, 10);
-
-            Console.WriteLine($"House has been dealt: {GetCardDercription(hT)}");
+            Console.WriteLine($"House has been dealt: {GetCardDercription(deck.Next())}");
             Console.WriteLine();
             Console.WriteLine("What do you want to do? ");
             Console.WriteLine("Choose [1] to take another card");
@@ -57,6 +56,8 @@ namespace Blackjack.Client.Console
 
             Console.WriteLine("Press any key to continue...");
             Console.ReadLine();
+
+            //mingi list kus on kaardid ja ükshaaval võtta kaardi küljest punktid ja liita need kokku. oluline on ainult vahet teha kummad on minu ja kummad arvuti kaardid
         }
         public static string GetCardDercription ( Card card)
         {
