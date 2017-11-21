@@ -6,29 +6,29 @@ namespace RestaurantReceipt
 {
     public class Receipt
     {
-        
-        public string Name { get; }
 
-        public string Address { get; }
+        private readonly string _name;
 
-        public Tab Tab { get; }
+        private readonly string _address;
+
+        private readonly Tab _tab;
 
         public Receipt(string name, string address, Tab tab)
         {
-            this.Name = name;
-            this.Address = address;
-            this.Tab = tab;
+            this._name = name;
+            this._address = address;
+            this._tab = tab;
 
         }
         public override string ToString()
         {
             
             StringBuilder sb = new StringBuilder();
-            sb.Append(Name + "\n");
-            sb.Append(Address + "\n");
+            sb.Append(_name + "\n");
+            sb.Append(_address + "\n");
             sb.Append("---------------------------"+ "\n");
 
-            foreach (var item in Tab.Items)
+            foreach (var item in _tab.Items)
             {
 
                 sb.Append("Price of food item: "+item + "\n");

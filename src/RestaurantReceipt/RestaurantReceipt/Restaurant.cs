@@ -7,20 +7,21 @@ namespace RestaurantReceipt
     {
 
 
-        public string Name { get; }
+        private readonly string _name;
 
-        public string Address { get; }
+        private readonly string _address;
+        
 
         public Restaurant(string name, string address)
         {
-            this.Name = name;
-            this.Address = address;
+            this._name = name;
+            this._address = address;
          
         }
         public Receipt GetReceipt(Tab tab)
         {
 
-            return new Receipt(this.Name, this.Address, tab);
+            return new Receipt(_name, _address, tab);
         }
 
     }

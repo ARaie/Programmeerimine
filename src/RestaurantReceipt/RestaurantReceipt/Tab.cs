@@ -9,7 +9,7 @@ namespace RestaurantReceipt
     public class Tab
     {
 
-        public List<double> Items = new List<double>();
+        public List<double> Items { get; private set; } = new List<double>();
 
         public void Add(double sum)
         {
