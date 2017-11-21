@@ -18,13 +18,16 @@ namespace Blackjack.Client.Console
             Console.WriteLine("Welcome to the came!");
             Console.WriteLine();
 
-            var c4 = new Card("4", 'C', 4);
-            var h6 = new Card("6", 'H', 6);
-            var s8 = new Card("8", 'S', 8);
-            var dJ = new Card("J", 'D', 10);
+            var c4 = new Card("4", Suite.Club, 4);
+            c4.Hidden = false;
+            var h6 = new Card("6", Suite.Hearts, 6);
+            h6.Hidden = false;
+            var s8 = new Card("8", Suite.Spade, 8);
+            s8.Hidden = false;
+            var dJ = new Card("J", Suite.Diamond, 10);
 
-            Console.WriteLine($"You have been dealt: {c4.Description} ,{h6.Description}");
-            Console.WriteLine($"House has been dealt: {s8.Description}, {(dJ.Hidden ? "[?]" : dJ.Description)}");
+            Console.WriteLine($"You have been dealt: {GetCardDercription(c4)}, {GetCardDercription(h6)}");
+            Console.WriteLine($"House has been dealt: {GetCardDercription(s8)}, {GetCardDercription(dJ)}");
             Console.WriteLine();
             Console.WriteLine("What do you want to do? ");
             Console.WriteLine("Choose [1] to take another card");
@@ -32,8 +35,15 @@ namespace Blackjack.Client.Console
             Console.WriteLine();
             Console.WriteLine("I choose: 1");
             Console.WriteLine();
-            Console.WriteLine("You have been dealt: 4S");
-            Console.WriteLine("House has been dealt: [?]");
+
+            var s4 = new Card("4", Suite.Spade, 4);
+            s8.Hidden = false;
+
+            Console.WriteLine($"You have been dealt: {GetCardDercription(s4)}");
+
+            var hT = new Card("T", Suite.Hearts, 10);
+
+            Console.WriteLine($"House has been dealt: {GetCardDercription(hT)}");
             Console.WriteLine();
             Console.WriteLine("What do you want to do? ");
             Console.WriteLine("Choose [1] to take another card");
@@ -47,6 +57,11 @@ namespace Blackjack.Client.Console
 
             Console.WriteLine("Press any key to continue...");
             Console.ReadLine();
+        }
+        public static string GetCardDercription ( Card card)
+        {
+            return card.Hidden ? "[?]" : card.Description;
+
         }
     }
 }
