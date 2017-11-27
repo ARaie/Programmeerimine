@@ -10,8 +10,10 @@ namespace Blackjack.Core
 
     public class Card
     {
-      
-        public string Description => _rank +_suite.GetShortSuitesName();
+
+        public string Description => _rank + _suite.GetShortSuitesName();
+
+        public int Points => _points;
 
         public bool Hidden { get; set; }
 
@@ -30,6 +32,6 @@ namespace Blackjack.Core
             this.Hidden = hidden;
         }
 
-       
+
     }
 }
