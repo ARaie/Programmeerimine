@@ -81,9 +81,23 @@ namespace Blackjack.Client.Console
                 {
                     correct = true;
                     Console.WriteLine("You have " + totalMe + " points vs house have " + totalHouse + " points");
-                    Console.WriteLine("House win!");
-                    Console.WriteLine();
-                    Console.WriteLine();
+                    if(totalMe == 21)
+                    {
+                        Console.WriteLine("You win!");
+                        Console.WriteLine();
+                    }
+
+                    else if (totalMe > totalHouse && totalMe <= 21)
+                    {
+                        Console.WriteLine("You win!");
+                        Console.WriteLine();
+                    }
+                    else
+                    {
+                        Console.WriteLine("House win!");
+                        Console.WriteLine();
+
+                    }
                 }
             }
             
