@@ -15,9 +15,44 @@ namespace Blackjack.Core
         {
             _cards = cards;
         }
-        // public static Deck D36 = new Deck();
 
-        // public static Deck D52 = new Deck();
+        public static List<Card> d52()
+        {
+            var result = new List<Card>();
+
+         
+            for (var suit = Suite.Club; suit <= Suite.Diamond; suit++)
+            {
+                for (var rank = Rank.two; rank <= Rank.ace; rank++)
+                {
+                    var card = new Card(rank, suit, (int) rank, true);
+                    result.Add(card);
+                }
+            }
+
+            return result;
+        }
+        public static List<Card> d36()
+        {
+            var result = new List<Card>();
+
+
+            for (var suit = Suite.Club; suit <= Suite.Diamond; suit++)
+            {
+                for (var rank = Rank.six; rank <= Rank.ace; rank++)
+                {
+                    var card = new Card(rank, suit, (int)rank, true);
+                    result.Add(card);
+                }
+            }
+
+            return result;
+        }
+
+        public static Deck D36 = new Deck(d36());
+
+        public static Deck D52 = new Deck(d52());
+
 
         public List<Card> Shuffle()
         {
@@ -42,8 +77,16 @@ namespace Blackjack.Core
 
         public Card Next()
         {
-            Card card = _cards.ElementAt(0);
-            _cards.RemoveAt(0);
+            Card card = null;
+
+            for( int i = 0; i < _cards.Count; i++)
+            {
+              
+                card = _cards[i];
+                _cards.RemoveAt(i);
+                i++;
+                return card;
+            }
 
             return card;
         }

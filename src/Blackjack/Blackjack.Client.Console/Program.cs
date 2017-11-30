@@ -19,25 +19,12 @@ namespace Blackjack.Client.Console
             Console.WriteLine();
             var totalMe = 0;
             var totalHouse = 0;
+            
+            
+            List<Card> shuffledList = Deck.D52.Shuffle();
 
-            var cards = new List<Card> {
-                new Card("4", Suite.Club, 4, true),
-                new Card("6", Suite.Hearts, 6, true),
-                new Card("8", Suite.Spade, 8, true),
-                new Card("J", Suite.Diamond, 10, true),
-                new Card("4", Suite.Spade, 4, true),
-                new Card("T", Suite.Hearts, 10, true),
-                new Card("5", Suite.Spade, 5, true),
-                new Card("3", Suite.Spade, 3, true),
-                new Card("2", Suite.Hearts, 2, true),
-                new Card("7", Suite.Hearts, 7, true)};
-
-
-            Deck deck = new Deck(cards);
-            List<Card> shuffledList = deck.Shuffle();
-
-             totalMe = +shuffledList[0].Points + shuffledList[1].Points;
-             totalHouse = +shuffledList[2].Points + shuffledList[3].Points;
+             totalMe = +Points.addPoints(shuffledList[0].Points) + Points.addPoints(shuffledList[1].Points);
+             totalHouse = +Points.addPoints(shuffledList[2].Points) + Points.addPoints(shuffledList[3].Points);
          
             Deck shuffledDeck = new Deck(shuffledList);
 
@@ -62,12 +49,12 @@ namespace Blackjack.Client.Console
                 {
                     var betsUp = shuffledDeck.Next();
                     Console.WriteLine($"You have been dealt: {GetCardDercription(betsUp)}");
-                    var addPoints = betsUp.Points;
+                    var addPoints = Points.addPoints(betsUp.Points);
                     totalMe = totalMe + addPoints;
 
                     var housePoints = shuffledDeck.Next();
                     Console.WriteLine($"House has been dealt: {GetCardDercription(housePoints)}");
-                    var addHousePoints = housePoints.Points;
+                    var addHousePoints = Points.addPoints(housePoints.Points);
                     totalHouse = totalHouse + addHousePoints;
 
                     Console.WriteLine();
@@ -106,19 +93,21 @@ namespace Blackjack.Client.Console
             Console.ReadLine();
             
         }
+        
         public static string GetCardDercription(Card card)
         {
             
-            return card.Description + Convert.ToString(card.Points);
+            return card.Description;
 
         }
-        // For user -> to hide House cards
+        //TODO For user -> to hide House cards
         public static string GetCardDercriptionInvisible(Card card)
         {
 
-            return card.Hidden ? "[?]" :  card.Description + Convert.ToString(card.Points);
+            return card.Hidden ? "[?]" :  card.Description;
 
         }
-       
+        
     }
+    
 }
