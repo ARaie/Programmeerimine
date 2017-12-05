@@ -11,11 +11,24 @@ namespace Blackjack.Core
 
         private readonly List<Card> _cards;
 
+        // Gives back right list according to user choice
+        public static List<Card> List(string userInput)
+        {
+            if (userInput == "52")
+            {
+                return D52.Shuffle();
+            }
+            else
+            {
+                return D36.Shuffle();
+            }
+        }
+
         public Deck(List<Card> cards)
         {
             _cards = cards;
         }
-
+        // Populates list with cards
         public static List<Card> d52()
         {
             var result = new List<Card>();
@@ -32,6 +45,7 @@ namespace Blackjack.Core
 
             return result;
         }
+        // Populates list with cards
         public static List<Card> d36()
         {
             var result = new List<Card>();
@@ -48,9 +62,10 @@ namespace Blackjack.Core
 
             return result;
         }
-
+        //Makes Deck from populated list
         public static Deck D36 = new Deck(d36());
 
+        //Makes Deck from populated list
         public static Deck D52 = new Deck(d52());
 
 
@@ -74,7 +89,7 @@ namespace Blackjack.Core
             }
             return shuffled;
         }
-
+        // Method for get next card from deck
         public Card Next()
         {
             Card card = null;

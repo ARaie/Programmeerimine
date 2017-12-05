@@ -8,6 +8,7 @@ namespace Blackjack.Core
 {
     public static class SuitExtension
     {
+        // To display a visually better image from cards description
         public static char GetShortSuitesName(this Suite suite)
         {
             switch(suite){

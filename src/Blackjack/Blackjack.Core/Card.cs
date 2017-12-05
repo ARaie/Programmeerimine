@@ -10,6 +10,7 @@ namespace Blackjack.Core
 
     public class Card
     {
+        // To display Rank as a char
         public string displayRanks(Rank _rank)
         {
             if(_rank == Rank.two)
