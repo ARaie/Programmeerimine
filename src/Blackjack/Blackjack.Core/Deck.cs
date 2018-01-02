@@ -11,13 +11,63 @@ namespace Blackjack.Core
 
         private readonly List<Card> _cards;
 
+        // Gives back right list according to user choice
+        public static List<Card> List(string userInput)
+        {
+            if (userInput == "52")
+            {
+                return D52.Shuffle();
+            }
+            else
+            {
+                return D36.Shuffle();
+            }
+        }
+
         public Deck(List<Card> cards)
         {
             _cards = cards;
         }
-        // public static Deck D36 = new Deck();
+        // Populates list with cards
+        public static List<Card> d52()
+        {
+            var result = new List<Card>();
 
-        // public static Deck D52 = new Deck();
+         
+            for (var suit = Suite.Club; suit <= Suite.Diamond; suit++)
+            {
+                for (var rank = Rank.two; rank <= Rank.ace; rank++)
+                {
+                    var card = new Card(rank, suit, (int) rank, true);
+                    result.Add(card);
+                }
+            }
+
+            return result;
+        }
+        // Populates list with cards
+        public static List<Card> d36()
+        {
+            var result = new List<Card>();
+
+
+            for (var suit = Suite.Club; suit <= Suite.Diamond; suit++)
+            {
+                for (var rank = Rank.six; rank <= Rank.ace; rank++)
+                {
+                    var card = new Card(rank, suit, (int)rank, true);
+                    result.Add(card);
+                }
+            }
+
+            return result;
+        }
+        //Makes Deck from populated list
+        public static Deck D36 = new Deck(d36());
+
+        //Makes Deck from populated list
+        public static Deck D52 = new Deck(d52());
+
 
         public List<Card> Shuffle()
         {
@@ -39,11 +89,19 @@ namespace Blackjack.Core
             }
             return shuffled;
         }
-
+        // Method for get next card from deck
         public Card Next()
         {
-            Card card = _cards.ElementAt(0);
-            _cards.RemoveAt(0);
+            Card card = null;
+
+            for( int i = 0; i < _cards.Count; i++)
+            {
+              
+                card = _cards[i];
+                _cards.RemoveAt(i);
+                i++;
+                return card;
+            }
 
             return card;
         }

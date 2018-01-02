@@ -8,16 +8,18 @@ namespace Blackjack.Core
 {
     public static class SuitExtension
     {
+        // To display a visually better image from cards description
         public static char GetShortSuitesName(this Suite suite)
         {
             switch(suite){
                 case Suite.Club: return 'C';
                 case Suite.Spade: return 'S';
                 case Suite.Hearts: return 'H';
-                case Suite.Diamond: return 'C';
+                case Suite.Diamond: return 'D';
                 default: throw new InvalidOperationException();
             }
            
         }
+
     }
 }
