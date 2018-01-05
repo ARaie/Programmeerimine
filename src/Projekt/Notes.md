@@ -18,7 +18,7 @@ Andmed, mis tulevad serverilt tagasi:
 	week 3 (15-21)
 	}
 
-	
+
 	Kuu{
 	jaanuar
 	veebruar
