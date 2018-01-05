@@ -4,7 +4,7 @@
  * /api/consumption?start=01-01-2018&end=01-01-2018&groupby=week
 Andmed, mis tulevad serverilt tagasi:
 
-	
+
 	Päev{
 	 01.01.2018
 	 02.01.2018
