@@ -2,7 +2,7 @@
 
  * MVC või Web API backend raamistik
  * /api/consumption?start=01-01-2018&end=01-01-2018&groupby=week
-Andmed, mis tulevad serverilt tagasi:
+ * Andmed, mis tulevad serverilt tagasi:
 
 
 	Päev{
