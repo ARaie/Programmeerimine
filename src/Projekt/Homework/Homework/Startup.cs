@@ -23,6 +23,7 @@ namespace Homework
         {
             loggerFactory.AddConsole();
 
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
