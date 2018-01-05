@@ -7,5 +7,6 @@ namespace Homework.Controllers
 {
     public class DataController
     {
+
     }
 }
