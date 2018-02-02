@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Energy Consuming Project</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <form action="/action_page.php">
+
+
+                <div class="form-check form-check-inline">
+                    <label for="startDate" class="form-check-label">Start date: </label><br>
+                    <input type="text" class="form-check-input" id="startDate" name="startDate">
+
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <label for="endDate" class="form-check-label">End date: </label><br>
+                    <input type="text" class="form-check-input" id="endDate" name="endDate">
+                </div>
+                <br>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="day" value="day">
+                    <label class="form-check-label" for="day">Day</label>
+
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="week" value="week">
+                    <label class="form-check-label" for="week">Week</label>
+
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="month" value="month">
+                    <label class="form-check-label" for="month">Month</label>
+                </div>
+
+                <br>
+                <div class="form-check form-check-inline">
+                    <label for="kWh" class="form-check-label">Price per kWh: </label>
+                    <input type="text" id="price" class="form-check-input" name="price" placeholder="Price">
+                </div>
+
+                <div>
+                    <button id="button" type="button" class="btn btn-primary mb-2">Submit</button>
+                </div>
+                <br>
+
+            </form>
+
+            <br>
+            <div id="consumption-result" class="table table-striped">
+    </div>
+    </div>
+
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.map"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+
+    <script>
+
+        var options = {
+            dateFormat: "d.m.Y",
+            defaultDate: moment().toISOString(),
+        }
+
+
+        var startDatePicker = flatpickr("#startDate", options);
+        startDatePicker.set('minDate', moment().subtract(2, 'years').toISOString());
+
+        var startDatePicker = flatpickr("#endDate", options);
+        startDatePicker.set('maxDate', "today");
+
+    </script>
+
+    <script id="consumption-table-template" type="text/x-handlebars-template">
+        <table class="table table-striped" style="width:50%">
+            <thead>
+                <tr>
+                    <th scope="col">Period</th>
+                    <th scope="col">Amount (kWh)</th>
+                    <th scope="col">Price (€)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each this}}
+                <tr>
+                    <td>{{period}}</td>
+                    <td>{{amount}}</td>
+                    <td></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        
+    </script>
+
+    <script>
+        $("#button").click(function () {
+
+            var selected = $("input[name=inlineRadioOptions]:checked").val();
+            alert(selected);
+
+
+            var result = [
+                {
+                    "period": "01.01.2018",
+                    "amount": 7
+                },
+                {
+                    "period": "02.01.2018",
+                    "amount": 6
+                },
+                {
+                    "period": "03.01.2018",
+                    "amount": 9
+                }
+
+            ]
+
+            var source = $("#consumption-table-template").html();
+            var template = Handlebars.compile(source);
+
+            var html = template(result);
+
+            $("#consumption-result").html(html);
+
+        });
+    </script>
+
+</body>
+</html >
