@@ -11,6 +11,15 @@ namespace Homework
     {
         public static void Main(string[] args)
         {
+            string start = Request.Form["startDate"];
+            string end = Request.Form["endDate"];
+            string period = Request.Form["inlineRadioOptions"];
+            string price = Request.Form["price"];
+            
+
+            string startDate = startDate.Value;
+
+
             var host = new WebHostBuilder()
 
                 .UseKestrel()
