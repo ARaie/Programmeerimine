@@ -84,7 +84,7 @@
     <script>
 
         var options = {
-            dateFormat: "d.m.Y",
+            dateFormat: "m.d.Y",
             defaultDate: moment().toISOString(),
         }
 
@@ -123,10 +123,14 @@
        
         $("#button").click(function () {
 
+            var startDate = $("#startDate").val();
+
+            var endDate = $("#endDate").val();
+
             if (document.getElementById("day").checked == true) {
                 $.ajax({
                     method: "GET",
-                    url: "http://localhost:59237/api/test?grouping=day",
+                    url: "http://localhost:59237/api/test?startDate="+startDate+"&endDate="+endDate+"&grouping=day", 
                 }).done(function (response) {
                     var source = $("#consumption-table-template").html();
                     var template = Handlebars.compile(source);
@@ -144,7 +148,7 @@
             if (document.getElementById("week").checked == true) {
                 $.ajax({
                     method: "GET",
-                    url: "http://localhost:59237/api/test?grouping=week",
+                    url: "http://localhost:59237/api/test?startDate="+startDate+"&endDate="+ endDate + "&grouping=week",
                 }).done(function (response) {
                     var source = $("#consumption-table-template").html();
                     var template = Handlebars.compile(source);
@@ -162,7 +166,7 @@
             if (document.getElementById("month").checked == true) {
                 $.ajax({
                     method: "GET",
-                    url: "http://localhost:59237/api/test?grouping=month",
+                    url: "http://localhost:59237/api/test?startDate=" + startDate + "&endDate=" + endDate + "&grouping=month",
                 }).done(function (response) {
                     var source = $("#consumption-table-template").html();
                     var template = Handlebars.compile(source);

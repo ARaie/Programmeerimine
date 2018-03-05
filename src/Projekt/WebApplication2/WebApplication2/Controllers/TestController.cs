@@ -13,9 +13,25 @@ namespace WebApplication2.Controllers
     {
         // GET: api/Test
         [HttpGet("test")]
-        public IActionResult Test(string grouping)
+        public IActionResult Test(DateTime startDate, DateTime endDate, string grouping)
         {
-            if (grouping == "day")
+            if (endDate < startDate)
+            {
+                return BadRequest("Invalid Date Range");
+            }
+            else if (startDate < DateTime.Today.AddYears(-2))
+            {
+                return BadRequest("Ei saa nii vanu anmeid");
+            }
+            else if (!grouping.Equals("day") && !grouping.Equals("week") && !grouping.Equals("month"))
+            {
+                return BadRequest("You must pick something!");
+            }
+            //else if (endDate > DateTime.Today)
+            //{
+            //    return BadRequest("Cant't get data from future!");
+            //}
+            else if (grouping == "day")
             {
                 PeriodAmount first = new PeriodAmount();
                 first.Period = "01.01.2018";
@@ -45,7 +61,8 @@ namespace WebApplication2.Controllers
 
                 return Json(data);
             }
-            else{
+            else
+            {
                 PeriodAmount first = new PeriodAmount();
                 first.Period = "jaanuar 2018";
                 first.Amount = "57";
@@ -58,8 +75,7 @@ namespace WebApplication2.Controllers
                 data.Add(second);
 
                 return Json(data);
-            } 
-
+            }
         }
         
     }
