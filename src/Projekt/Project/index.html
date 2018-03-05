@@ -64,19 +64,22 @@
                 <div>
                     <button id="button" type="button" class="btn btn-primary mb-2">Submit</button>
                 </div>
+
                 <br>
 
             </form>
 
             <br>
             <div id="consumption-result" class="table table-striped">
-    </div>
+            </div>
+        </div>
     </div>
 
     <script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.map"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <script>
 
@@ -117,35 +120,98 @@
     </script>
 
     <script>
+       
         $("#button").click(function () {
 
-            var selected = $("input[name=inlineRadioOptions]:checked").val();
-            alert(selected);
+            if (document.getElementById("day").checked == true) {
+                $.ajax({
+                    method: "GET",
+                    url: "http://localhost:59237/api/test?grouping=day",
+                }).done(function (response) {
+                    var source = $("#consumption-table-template").html();
+                    var template = Handlebars.compile(source);
+                    var html = template(response);
+                    $("#consumption-result").html(html);
+
+                })
 
 
-            var result = [
-                {
-                    "period": "01.01.2018",
-                    "amount": 7
-                },
-                {
-                    "period": "02.01.2018",
-                    "amount": 6
-                },
-                {
-                    "period": "03.01.2018",
-                    "amount": 9
-                }
+                    .fail(function (jqXHR, textStatus) {
+                        alert("Fail");
 
-            ]
+                    });
+            }
+            if (document.getElementById("week").checked == true) {
+                $.ajax({
+                    method: "GET",
+                    url: "http://localhost:59237/api/test?grouping=week",
+                }).done(function (response) {
+                    var source = $("#consumption-table-template").html();
+                    var template = Handlebars.compile(source);
+                    var html = template(response);
+                    $("#consumption-result").html(html);
 
-            var source = $("#consumption-table-template").html();
-            var template = Handlebars.compile(source);
+                })
 
-            var html = template(result);
 
-            $("#consumption-result").html(html);
+                    .fail(function (jqXHR, textStatus) {
+                        alert("Fail");
 
+                    });
+            }
+            if (document.getElementById("month").checked == true) {
+                $.ajax({
+                    method: "GET",
+                    url: "http://localhost:59237/api/test?grouping=month",
+                }).done(function (response) {
+                    var source = $("#consumption-table-template").html();
+                    var template = Handlebars.compile(source);
+                    var html = template(response);
+                    $("#consumption-result").html(html);
+
+                })
+
+
+                    .fail(function (jqXHR, textStatus) {
+                        alert("Fail");
+
+                    });
+            }
+            //} else if (document.getElementById("week").checked == true) {
+            //    $.ajax({
+            //        method: "GET",
+            //        url: "http://localhost:59237/api/week",
+            //    }).done(function (response) {
+            //        var source = $("#consumption-table-template").html();
+            //        var template = Handlebars.compile(source);
+            //        var html = template(response);
+            //        $("#consumption-result").html(html);
+
+            //    })
+
+
+            //        .fail(function (jqXHR, textStatus) {
+            //            alert("Fail");
+
+            //        });
+            //} else if (document.getElementById("month").checked == true) {
+            //    $.ajax({
+            //        method: "GET",
+            //        url: "http://localhost:59237/api/month",
+            //    }).done(function (response) {
+            //        var source = $("#consumption-table-template").html();
+            //        var template = Handlebars.compile(source);
+            //        var html = template(response);
+            //        $("#consumption-result").html(html);
+
+            //    })
+
+
+            //        .fail(function (jqXHR, textStatus) {
+            //            alert("Fail");
+
+            //        });
+            //}
         });
     </script>
 
